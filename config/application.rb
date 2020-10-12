@@ -22,5 +22,15 @@ module Blog
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.generators do |g|
+      g.test_framework :rspec,
+        fixtures: false,
+        view_specs: false,
+        helper_specs: true,
+        routing_specs: false,
+        controller_specs: false,
+        request_specs: false
+    end
   end
 end

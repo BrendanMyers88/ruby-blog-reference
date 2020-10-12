@@ -4,7 +4,15 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.where(id: params[:id]).first
+
+    if @post
+      # nothing as we've found the post
+    else
+      # handle not finding post based on application logic
+      flash[:error] = "I'm sorry but the post you are looking for was lost in the ether"
+      redirect_to posts_path
+    end
   end
 
   def create
