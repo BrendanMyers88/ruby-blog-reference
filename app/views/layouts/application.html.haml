@@ -1,0 +1,36 @@
+!!!
+
+%html
+  %head
+    %title
+      Blog
+  = stylesheet_link_tag 'application', media: 'all'
+  = javascript_include_tag 'application'
+  = csrf_meta_tags
+
+%body.d-flex.flex-column.h-100
+  %header
+    %nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+      %a.navbar-brand{href: "#"}
+        Fixed navbar
+        %button.navbar-toggler{type: "button", data: {toggle: "collapse", target: "#navbarCollapse"}, aria: {controls: "navbarCollapse", expanded: "false", label: "Toggle navigation"}}
+          %span.navbar-toggler-icon
+            %div.collapse.navbar-collapse#navbarCollapse
+              %ul.navbar-nav.mr-auto
+                %li.nav-item.active
+                  %a.nav-link{href: "#"}
+                    Home
+                    %span.sr-only
+                      (current)
+                %li.nav-item
+                  %a.nav-link{href: "#"}
+                    Link
+                %li.nav-item
+                  %a.nav-link.disabled{href: "#", tabindex: "-1", aria: {disabled: "true"}}
+                    Disabled
+              %form.form-inline.mt-2.mt-md-0
+                %input.form-control.mr-sm-2{type: "text", placeholder: "Search", aria: {label: "Search"}}
+                  %button.btn.btn-outline-success.my-2.my-sm-0{type: "submit"}
+                    Search
+
+  = yield

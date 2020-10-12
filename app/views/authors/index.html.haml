@@ -1,0 +1,7 @@
+%div.container
+  %h2.h2
+    Author List
+  %ul.list-group
+    - @authors.each do |author|
+      %li.list-group-item
+        = link_to "#{author.name}", author_path(author)

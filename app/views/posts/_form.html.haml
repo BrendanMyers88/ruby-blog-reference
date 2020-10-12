@@ -1,0 +1,20 @@
+= form_for @post, html: {class: "nifty_form"} do |f|
+  - if @post.errors.any?
+    %div
+      Something Went Wrong
+    %ul
+      - @post.errors.full_messages.each do |e|
+        %li
+          = e
+  %div.container
+    %div.form-group
+      = f.label :title
+      = f.text_field :title, class: 'form-control'
+    %div.form-group
+      = f.label :body
+      = f.text_area :body, size: "60x12", class: 'form-control'
+    %div.form-group
+      = f.label :author
+      = f.select :author_id, options_from_collection_for_select(Author.all, :id, :name), {}, { :class => 'form-control'}
+    %div
+      = f.submit f.object.persisted? ? 'Update' : 'Create', class: 'btn btn-primary'

@@ -1,0 +1,17 @@
+%div.container
+  %h2
+    =@author.name
+
+  %p
+    =@author.position
+
+  %p
+    ="Author Since: #{@author.created_at}"
+  %ul
+    - @author.posts.each  do |post|
+      %li
+        =link_to post.title, post_path(post)
+%div.container
+  = link_to 'Delete Author', author_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-danger'
+  = link_to "Edit Author", edit_author_path(@author), class: 'btn btn-default btn-primary'
+  = link_to "Return to index", authors_path, class: 'btn btn-default btn-info'

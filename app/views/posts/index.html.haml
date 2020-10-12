@@ -1,0 +1,21 @@
+%div.container
+  %table.table
+    %thead
+      %tr
+        %th
+          Blog Title
+        %th
+        %th
+        %th
+    %tbody
+      - @posts.each do |post|
+        %tr
+          %td
+            = link_to "#{post.title}", post_path(post)
+          %td
+            = link_to 'Delete Post', post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-danger'
+          %td
+            = link_to "Edit Post", edit_post_path(post), class: 'btn btn-default btn-primary'
+%div.container
+  = link_to "New Post", new_post_path, class: 'btn btn-default btn-primary'
+  = link_to "New Author", new_author_path, class: 'btn btn-default btn-info'

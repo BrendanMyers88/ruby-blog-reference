@@ -1,0 +1,17 @@
+= form_for @author, html: {class: "nifty_form"} do |f|
+  - if @author.errors.any?
+    %div
+      Something Went Wrong
+    %ul
+      - @author.errors.full_messages.each do |e|
+        %li
+          = e
+  %div.container
+    %div.form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    %div.form-group
+      = f.label :position
+      = f.text_field :position, class: 'form-control'
+    %div
+      = f.submit f.object.persisted? ? 'Update' : 'Create', class: 'btn btn-primary'
